@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './Components/Header';
 
 class App extends Component {
+  constructor() {
+    super()
+      this.state = {
+        locations: [],
+      }
+  }
+  
+  async componentDidMount() {
+    let result = await fetch("http://localhost:3001/locations")
+    let data =  await result.json()
+    this.setState({
+        locations: data.locations
+      })
+      console.log(this.state.locations)
+  }
+  
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
       </div>
     );
   }
