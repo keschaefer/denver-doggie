@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Components/Header';
+import Card from './Components/Card';
 
 class App extends Component {
   constructor() {
@@ -21,8 +22,13 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
-        <Header />
+     <div className="App">
+       <div className= "main">
+          <Header />
+          <div className = "card-container">
+            <Card locations = {this.state.locations}/>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,14 +1,43 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.App {
+  margin-right: 10%;
+  margin-left: 10%;
+  background-image: url("https://www.transparenttextures.com/patterns/billie-holiday.png");
+  background-color: #f8f6ed; 
+  font-family: 'Raleway', sans-serif;
+  height: 1000em;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.main {
+  height: 100%;
+  padding: 2em;
+}
+
+.header h1 {
+  color: #0f0b08;
+
+}
+
+.header p {
+  margin-right: 15%;
+  margin-left: 15%;
+}
+.card {
+  width: 18rem;
+  border: 1px solid black;
+  margin: 1em;
+  padding: 1em;
+}
+
+.card img {
+  height: 10em;
+  width:  10em;
+}
+
+.card-title {
+  font-weight: bold;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
 }
