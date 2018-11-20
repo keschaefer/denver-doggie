@@ -65,9 +65,38 @@ class App extends Component {
         category: this.state.category,
         image: "https://dl.dropboxusercontent.com/s/hjwyykdtwyhe49x/Ace_Hardware.jpg"
       }
-      fetch('localhost:3000/')
+      fetch('localhost:3000/', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        body: JSON.stringify(newLocation)
+      })
+
+      .then(respons => (response.json()))
+      .then(response => {
+        this.setState({
+          locations: [...this.state.locations, response]
+        })
+      })
     }
   }
+      
+    //   fetch ("http://localhost:8082/api/messages", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json; charset=utf-8"
+    //   },
+    //   body: JSON.stringify(tempMessage)
+    // })
+
+    // .then(response => (response.json()))
+    // .then(response => {
+    //   this.setState({
+    //     messages: [...this.state.messages, response]
+    //   })
+    // })
+   
 
   render() {
     return (

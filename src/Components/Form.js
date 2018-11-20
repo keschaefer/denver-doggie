@@ -9,11 +9,11 @@ const Form = (props) => {
          <h3>Know of a pup-friendly spot? Add it to our site!</h3>
             <div class="form-group title name">
                <label>Location Name</label>
-               <input type="text" class="form-control" placeholder="Location Name"></input>
+               <input onChange = {props.saveLocationName} type="text" class="form-control" placeholder="Location Name"></input>
             </div>
             <div class="form-group title category">
                <label>Category</label>
-               <select class="form-control">
+               <select onChange = {props.saveCategory} class="form-control">
                   <option>Brewery</option>
                   <option>Retail</option>
                   <option>Trail</option>
@@ -23,11 +23,11 @@ const Form = (props) => {
             </div>
             <div class="form-group title address">
                <label>Location Address</label>
-               <input type="text" class="form-control" placeholder="Location Address"></input>
+               <input onChange = {props.saveLocationAddress} type="text" class="form-control" placeholder="Location Address"></input>
             </div>
             <div class="form-group title description">
                <label>Description</label>
-               <textarea class="form-control" rows="5" placeholder= "Describe your location, why is it such a great spot to bring your pup along?"></textarea>
+               <textarea onChange = {props.saveDescription} class="form-control" rows="5" placeholder= "Describe your location, why is it such a great spot to bring your pup along?"></textarea>
             </div>
             <div className= "ranking-container">
                <label>Rank this Location</label>
