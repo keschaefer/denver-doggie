@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Card = (props) => {
-   return props.locations.map(location => {
-      console.log(location.image)
+   if (props.locations.length > 0){
+      return props.locations.map(location => {
       return (
-         <div className="card" key = {location.id}>
+         <div className="card" >
             <img className="card-img-top" src= {location.image} alt="Card image placholder"></img>
             <div className="card-body">
                <h5 className="card-title">{location.location_name}</h5>
@@ -13,7 +13,10 @@ const Card = (props) => {
             </div>
          </div>   
       )
-   })
-}
+      })} else {
+         return null
+      }
+   }
+
 
 export default Card;

@@ -7,13 +7,13 @@ const Form = (props) => {
          <div className= "form-container">
          <form>
          <h3>Know of a pup-friendly spot? Add it to our site!</h3>
-            <div class="form-group title name">
+            <div className="form-group title name">
                <label>Location Name</label>
-               <input onChange = {props.saveLocationName} type="text" class="form-control" placeholder="Location Name"></input>
+               <input onChange = {props.saveLocationName} type="text" className="form-control" placeholder="Location Name"></input>
             </div>
-            <div class="form-group title category">
+            <div className="form-group title category">
                <label>Category</label>
-               <select onChange = {props.saveCategory} class="form-control">
+               <select onChange = {props.saveCategory} className="form-control">
                   <option>Brewery</option>
                   <option>Retail</option>
                   <option>Trail</option>
@@ -21,35 +21,35 @@ const Form = (props) => {
                   <option>Dog Park</option>
                </select>
             </div>
-            <div class="form-group title address">
+            <div className="form-group title address">
                <label>Location Address</label>
-               <input onChange = {props.saveLocationAddress} type="text" class="form-control" placeholder="Location Address"></input>
+               <input onChange = {props.saveLocationAddress} type="text" className="form-control" placeholder="Location Address"></input>
             </div>
-            <div class="form-group title description">
+            <div className="form-group title description">
                <label>Description</label>
-               <textarea onChange = {props.saveDescription} class="form-control" rows="5" placeholder= "Describe your location, why is it such a great spot to bring your pup along?"></textarea>
+               <textarea onChange = {props.saveDescription} className="form-control" rows="5" placeholder= "Describe your location, why is it such a great spot to bring your pup along?"></textarea>
             </div>
             <div className= "ranking-container">
                <label>Rank this Location</label>
-               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="1"></input>
-                  <label class="form-check-label">1</label>
+               <div className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" value="1"></input>
+                  <label className="form-check-label">1</label>
                </div>
-               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="1"></input>
-                  <label class="form-check-label">2</label>
+               <div className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" value="1"></input>
+                  <label className="form-check-label">2</label>
                </div>
-               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="1"></input>
-                  <label class="form-check-label">3</label>
+               <div className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" value="1"></input>
+                  <label className="form-check-label">3</label>
                </div>
-               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="1"></input>
-                  <label class="form-check-label">4</label>
+               <div className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" value="1"></input>
+                  <label className="form-check-label">4</label>
                </div>
-               <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" value="1"></input>
-                  <label class="form-check-label">5</label>
+               <div className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" value="1"></input>
+                  <label className="form-check-label">5</label>
                </div>
                <button onClick= {props.formData} className= "submit-button btn btn-info">Submit</button>
             </div>      

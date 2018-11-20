@@ -11,20 +11,19 @@ class App extends Component {
         locations: [],
         id: "",
         location_name: "",
-        address: "",
+        location_address: "",
         description: "",
         category: "",
-        image: "https://dl.dropboxusercontent.com/s/hjwyykdtwyhe49x/Ace_Hardware.jpg"
+        image: ""
       }
   }
   
   async componentDidMount() {
-    let result = await fetch("http://localhost:3001/locations")
+    let result = await fetch("http://localhost:3001/")
     let data =  await result.json()
     this.setState({
         locations: data.locations
       })
-      console.log(this.state.locations)
   }
   
   saveLocationName = (event) => {
@@ -57,30 +56,30 @@ class App extends Component {
 
   formData = (event) => {
     event.preventDefault()
-    newLocation = {
+    let newLocation = {
         id: (this.state.locations.length + 1),
-        business_name: this.state.business_name,
-        address: this.state.business_address,
+        location_name: this.state.location_name,
+        location_address: this.state.location_address,
         description: this.state.description,
         category: this.state.category,
         image: "https://dl.dropboxusercontent.com/s/hjwyykdtwyhe49x/Ace_Hardware.jpg"
       }
-      fetch('localhost:3000/', {
+      fetch('http://localhost:3001/', {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         },
         body: JSON.stringify(newLocation)
       })
-
-      .then(respons => (response.json()))
+      .then(response => (response.json()))
       .then(response => {
         this.setState({
           locations: [...this.state.locations, response]
         })
+        console.log(this.state.locations)
       })
     }
-  }
+  
       
     //   fetch ("http://localhost:8082/api/messages", {
     //   method: "POST",
