@@ -41,3 +41,27 @@
   justify-content: center;
   margin-top: 4em;
 }
+
+.form-container {
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-align: left;
+}
+
+.ranking-container {
+  display: flex;
+  
+}
+
+.form-check {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.form-check-label {
+  margin-left: .5em;
+}
