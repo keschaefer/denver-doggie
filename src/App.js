@@ -2,18 +2,21 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import Header from './Components/Header';
 import Card from './Components/Card';
-import Form from './Components/Form'
+import Form from './Components/Form';
+import Search from './Components/Search';
 
 class App extends Component {
   constructor() {
     super()
       this.state = {
         locations: [],
+        filter_category: "Blah",
         id: "",
         location_name: "",
         location_address: "",
         description: "",
         category: "",
+        ranking: "",
         image: ""
       }
   }
@@ -40,6 +43,13 @@ class App extends Component {
     })
   }
 
+  saveRanking = (event) => {
+    event.preventDefault()
+    this.setState({
+      ranking: event.target.value
+    })
+  }
+
   saveLocationAddress = (event) => {
     event.preventDefault()
     this.setState({
@@ -54,6 +64,19 @@ class App extends Component {
     })
   }
 
+  filterCategory = (event) => {
+    let category = event.target.value.toLowerCase()
+    this.setState({
+      filter_category: category
+    })
+    let filteredLocations = this.state.locations.filter(location => {
+    return location.category === this.state.filterCatergory
+    })
+    this.setState({
+      locations: filteredLocations
+    })
+  }
+
   formData = (event) => {
     event.preventDefault()
     let newLocation = {
@@ -62,6 +85,7 @@ class App extends Component {
         location_address: this.state.location_address,
         description: this.state.description,
         category: this.state.category,
+        ranking: this.state.ranking,
         image: "https://dl.dropboxusercontent.com/s/hjwyykdtwyhe49x/Ace_Hardware.jpg"
       }
       fetch('http://localhost:3001/', {
@@ -76,7 +100,6 @@ class App extends Component {
         this.setState({
           locations: [...this.state.locations, response]
         })
-        console.log(this.state.locations)
       })
     }
   
@@ -106,12 +129,16 @@ class App extends Component {
           <div className = "card-container">
             <Card locations = {this.state.locations}/>
           </div>
+          <Search
+          filterCategory= {this.filterCategory}
+          />
           <Form 
           formData = {this.formData}
           saveLocationName = {this.saveLocationName}
           saveCategory = {this.saveCategory}
           saveLocationAddress = {this.saveLocationAddress}
           saveDescription = {this.saveDescription}
+          saveRanking= {this.saveRanking}
           />
         </div>
       </div>

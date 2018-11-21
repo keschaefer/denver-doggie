@@ -30,25 +30,32 @@ const Form = (props) => {
                <textarea onChange = {props.saveDescription} className="form-control" rows="5" placeholder= "Describe your location, why is it such a great spot to bring your pup along?"></textarea>
             </div>
             <div className= "ranking-container">
-               <label>Rank this Location</label>
-               <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" value="1"></input>
-                  <label className="form-check-label">1</label>
+                  <label>Rank this Location</label>
+                    
+               <div  onClick= {props.saveRanking} className="form-check form-check-inline">
+                  <input className="form-check-input"  type="radio" name= "gridRadios" id = "example" value="1"></input>
+                  <label className="form-check-label" for= "example">1</label>
                </div>
-               <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" value="1"></input>
-                  <label className="form-check-label">2</label>
+               <div onClick= {props.saveRanking} className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" value="2"></input>
+                  <label className="form-check-label" checked>2</label>
                </div>
-               <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" value="1"></input>
+
+               {/* <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+          <label class="form-check-label" for="gridRadios1">
+            First radio */}
+
+
+               <div onClick= {props.saveRanking} className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" value="3"></input>
                   <label className="form-check-label">3</label>
                </div>
-               <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" value="1"></input>
+               <div onClick= {props.saveRanking} className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" value="4"></input>
                   <label className="form-check-label">4</label>
                </div>
-               <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" value="1"></input>
+               <div onClick= {props.saveRanking} className="form-check form-check-inline">
+                  <input className="form-check-input" type="radio" value="5"></input>
                   <label className="form-check-label">5</label>
                </div>
                <button onClick= {props.formData} className= "submit-button btn btn-info">Submit</button>

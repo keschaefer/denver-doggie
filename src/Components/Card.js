@@ -4,7 +4,7 @@ const Card = (props) => {
    if (props.locations.length > 0){
       return props.locations.map(location => {
       return (
-         <div className="card" >
+         <div className="card" key = {location.id}>
             <img className="card-img-top" src= {location.image} alt="Card image placholder"></img>
             <div className="card-body">
                <h5 className="card-title">{location.location_name}</h5>
