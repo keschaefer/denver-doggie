@@ -10,28 +10,30 @@
 .main {
   height: 100%;
   padding: 2em;
+  display: flex;
+  flex-direction: column;
 }
 
-.header h1 {
+.header {
   color: #0f0b08;
-
+  text-align: left;
 }
 
-.header p {
-  margin-right: 15%;
-  margin-left: 15%;
-}
 .card {
-  width: 20rem;
-  min-height: 35rem;
+  width: 50rem;
+  min-height: 18rem;
   border: 1px solid black;
   margin: 1em;
   padding: 1em;
+  display: flex;
 }
 
+.card-img{
+ 
+}
 .card img {
-  height: 10em;
-  width:  10em;
+  height: 15em;
+  width:  15em;
 }
 
 .card-title {

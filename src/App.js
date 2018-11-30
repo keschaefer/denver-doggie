@@ -25,9 +25,16 @@ class App extends Component {
     let result = await fetch("http://localhost:3001/")
     let data =  await result.json()
     this.setState({
-        locations: data.locations
+        locations: data
       })
   }
+
+  // fetch('http://localhost:3001/')
+  //     .then(response => (response.json()))
+  //     .then(response => {
+  //       this.setState({
+  //         locations: [...this.state.locations, response]
+  //       })
   
   saveLocationName = (event) => {
     event.preventDefault()
@@ -64,19 +71,6 @@ class App extends Component {
     })
   }
 
-  filterCategory = (event) => {
-    let category = event.target.value.toLowerCase()
-    this.setState({
-      filter_category: category
-    })
-    let filteredLocations = this.state.locations.filter(location => {
-    return location.category === this.state.filterCatergory
-    })
-    this.setState({
-      locations: filteredLocations
-    })
-  }
-
   formData = (event) => {
     event.preventDefault()
     let newLocation = {
@@ -85,7 +79,7 @@ class App extends Component {
         location_address: this.state.location_address,
         description: this.state.description,
         category: this.state.category,
-        ranking: this.state.ranking,
+        // ranking: this.state.ranking,
         image: "https://dl.dropboxusercontent.com/s/hjwyykdtwyhe49x/Ace_Hardware.jpg"
       }
       fetch('http://localhost:3001/', {
@@ -100,26 +94,23 @@ class App extends Component {
         this.setState({
           locations: [...this.state.locations, response]
         })
+        
       })
     }
-  
-      
-    //   fetch ("http://localhost:8082/api/messages", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json; charset=utf-8"
-    //   },
-    //   body: JSON.stringify(tempMessage)
-    // })
 
-    // .then(response => (response.json()))
-    // .then(response => {
-    //   this.setState({
-    //     messages: [...this.state.messages, response]
-    //   })
-    // })
+    filterCategory = (event) => {
+      let category = event.target.value.toLowerCase()
+      this.setState({
+        filter_category: category
+      })
+      let filteredLocations = this.state.locations.filter(location => {
+      return location.category === this.state.filterCatergory
+      })
+      this.setState({
+        locations: filteredLocations
+      })
+    }
    
-
   render() {
     return (
       <Fragment>
