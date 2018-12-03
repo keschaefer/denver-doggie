@@ -19,3 +19,7 @@ The back-end site for Denver Doggie is hosted at
 https://evening-journey-97622.herokuapp.com/
 
 The GitHub Repo for the Doggie-server is here https://github.com/keschaefer/doggie-data-express-server
+
+## Preview
+
+![snag.gy](https://snag.gy/5er0H1.jpg)
