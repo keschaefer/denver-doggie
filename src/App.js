@@ -23,7 +23,7 @@ class App extends Component {
   }
   
   async componentDidMount() {
-    let result = await fetch("http://localhost:3001/")
+    let result = await fetch("https://evening-journey-97622.herokuapp.com/")
     let data =  await result.json()
     this.setState({
         locations: data
@@ -72,26 +72,7 @@ class App extends Component {
       description: event.target.value
     })
   }
-
-  deleteLocation = (event) => {
-    event.preventDefault()
-    let deleteLocation = {
-          id: Number(event.target.id)
-        }
-        console.log(deleteLocation)
-        return fetch('http://localhost:3001/', {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json; charset=utf-8"
-          },
-          body: JSON.stringify(deleteLocation)
-        })
-        .then(response => console.log(response.status))
-        }
-    
   
-
-
   formData = (event) => {
     event.preventDefault()
     let newLocation = {
@@ -101,7 +82,7 @@ class App extends Component {
         category: this.state.category,
         image: "https://dl.dropboxusercontent.com/s/hjwyykdtwyhe49x/Ace_Hardware.jpg"
       }
-      fetch('http://localhost:3001/', {
+      fetch('https://evening-journey-97622.herokuapp.com/', {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8"
@@ -116,7 +97,24 @@ class App extends Component {
       })
     }
 
+    //Getting error invalid input syntax for integer: "{"id":11}"
+    deleteLocation = (event) => {
+      event.preventDefault()
+      let deleteLocation = {
+            id: Number(event.target.id)
+          }
+          console.log(deleteLocation)
+          return fetch('https://evening-journey-97622.herokuapp.com/', {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            body: JSON.stringify(deleteLocation)
+          })
+          .then(response => console.log(response.status))
+          }
     
+    //Async issue, need to put in a promise
     filterCategory = (event) => {
       let category = event.target.value.toLowerCase()
       this.setState({
