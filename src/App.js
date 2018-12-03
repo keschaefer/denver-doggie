@@ -17,7 +17,8 @@ class App extends Component {
         description: "",
         category: "",
         ranking: "",
-        image: ""
+        image: "",
+        deleteId: ""
       }
   }
   
@@ -27,6 +28,7 @@ class App extends Component {
     this.setState({
         locations: data
       })
+      console.log(this.state.locations)
   }
 
   // fetch('http://localhost:3001/')
@@ -71,15 +73,32 @@ class App extends Component {
     })
   }
 
+  deleteLocation = (event) => {
+    event.preventDefault()
+    let deleteLocation = {
+          id: Number(event.target.id)
+        }
+        console.log(deleteLocation)
+        return fetch('http://localhost:3001/', {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8"
+          },
+          body: JSON.stringify(deleteLocation)
+        })
+        .then(response => console.log(response.status))
+        }
+    
+  
+
+
   formData = (event) => {
     event.preventDefault()
     let newLocation = {
-        id: (this.state.locations.length + 1),
         location_name: this.state.location_name,
         location_address: this.state.location_address,
         description: this.state.description,
         category: this.state.category,
-        // ranking: this.state.ranking,
         image: "https://dl.dropboxusercontent.com/s/hjwyykdtwyhe49x/Ace_Hardware.jpg"
       }
       fetch('http://localhost:3001/', {
@@ -92,12 +111,12 @@ class App extends Component {
       .then(response => (response.json()))
       .then(response => {
         this.setState({
-          locations: [...this.state.locations, response]
+          locations: [...this.state.locations, response[0]]
         })
-        
       })
     }
 
+    
     filterCategory = (event) => {
       let category = event.target.value.toLowerCase()
       this.setState({
@@ -118,7 +137,9 @@ class App extends Component {
        <div className= "main">
           <Header />
           <div className = "card-container">
-            <Card locations = {this.state.locations}/>
+            <Card 
+            locations = {this.state.locations}
+            deleteLocation = {this.deleteLocation}/>
           </div>
           <Search
           filterCategory= {this.filterCategory}
