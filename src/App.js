@@ -21,23 +21,19 @@ class App extends Component {
         deleteId: ""
       }
   }
-  
-  async componentDidMount() {
-    let result = await fetch("https://evening-journey-97622.herokuapp.com/")
-    let data =  await result.json()
-    this.setState({
-        locations: data
+  getRequest = () => {
+    fetch('http://localhost:3001/')
+      .then(response => (response.json()))
+      .then(response => {
+        this.setState({locations: response})
       })
-      console.log(this.state.locations)
-  }
+    }
+    
 
-  // fetch('http://localhost:3001/')
-  //     .then(response => (response.json()))
-  //     .then(response => {
-  //       this.setState({
-  //         locations: [...this.state.locations, response]
-  //       })
-  
+  componentDidMount() {
+    this.getRequest()
+  }
+    
   saveLocationName = (event) => {
     event.preventDefault()
     this.setState({
@@ -82,7 +78,7 @@ class App extends Component {
         category: this.state.category,
         image: "https://dl.dropboxusercontent.com/s/hjwyykdtwyhe49x/Ace_Hardware.jpg"
       }
-      fetch('https://evening-journey-97622.herokuapp.com/', {
+      fetch('http://localhost:3001', {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8"
@@ -101,19 +97,29 @@ class App extends Component {
     deleteLocation = (event) => {
       event.preventDefault()
       let deleteLocation = {
-            id: Number(event.target.id)
+            id: event.target.id
           }
           console.log(deleteLocation)
-          return fetch('https://evening-journey-97622.herokuapp.com/', {
+          return fetch('http://localhost:3001', {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json; charset=utf-8"
             },
             body: JSON.stringify(deleteLocation)
           })
-          .then(response => console.log(response.status))
-          }
+          .then(response => response.json())
+          .then(response => (console.log(response)))
+          .then(response => {
+            this.setState({
+              locations: response
+            }) 
+          })
+          console.log(this.state.locations)
+        }  
     
+        // let newLocationsList = this.state.locations.filter(location => {
+        //   return location.id !== response[0].id
+        // })
     //Async issue, need to put in a promise
     filterCategory = (event) => {
       let category = event.target.value.toLowerCase()
