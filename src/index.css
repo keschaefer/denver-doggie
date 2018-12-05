@@ -2,7 +2,7 @@
   margin-right: 10%;
   margin-left: 10%;
   font-family: 'Raleway', sans-serif;
-  height: 1000em;
+  /* height: 1000em; */
 }
 
 .body {
@@ -17,6 +17,16 @@
   justify-content: space-between;
   align-items: flex-end; 
   border-bottom: 1px solid #d9d9d9;
+  background-color: white;
+  position: sticky;
+  z-index: 99999;
+  top: 0px;
+}
+
+.logo {
+  font-family: 'Charmonman', cursive;
+  font-size: 20px;
+  padding-right: 1em;
 }
 
 .description-section {
@@ -92,4 +102,13 @@
   margin-top: 10em;
   margin-left: 5%;
   margin-right: 5%;
+}
+
+.footer {
+  background-color: white;
+  position: sticky;
+  z-index: 99999;
+  bottom: 0px;
+  height: 2em;
+  text-align: right;
 }

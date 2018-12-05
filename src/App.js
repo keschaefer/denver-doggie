@@ -5,6 +5,7 @@ import Card from './Components/Card';
 import Form from './Components/Form';
 import Search from './Components/Search';
 import Description from './Components/Description'
+import Footer from './Components/Footer'
 
 class App extends Component {
   constructor() {
@@ -23,6 +24,7 @@ class App extends Component {
         deleteId: ""
       }
   }
+
   getRequest = () => {
     fetch('http://localhost:3001/')
       .then(response => (response.json()))
@@ -31,7 +33,6 @@ class App extends Component {
       })
     }
     
-
   componentDidMount() {
     this.getRequest()
   }
@@ -43,12 +44,12 @@ class App extends Component {
     })
   }
 
-  saveRanking = (event) => {
-    event.preventDefault()
-    this.setState({
-      ranking: event.target.value
-    })
-  }
+  // saveRanking = (event) => {
+  //   event.preventDefault()
+  //   this.setState({
+  //     ranking: event.target.value
+  //   })
+  // }
 
   saveLocationAddress = (event) => {
     event.preventDefault()
@@ -56,6 +57,13 @@ class App extends Component {
       location_address: event.target.value
     })
   }
+
+  // handleChange = (event) => {
+  //   const { value, name } = event.target
+  //   this.setState({
+  //     [name]: value
+  //   })
+  // }
 
   saveDescription = (event) => {
     event.preventDefault()
@@ -101,7 +109,7 @@ class App extends Component {
             },
             body: JSON.stringify(deleteLocation)
           })
-        .then(response => this.getRequest())
+        .then(() => this.getRequest())
         .then(console.log(this.state.locations))
       }  
     
@@ -146,6 +154,7 @@ class App extends Component {
                   />
               </div>
             </div>
+            <Footer />
           </div>
         </div>
       </Fragment>
