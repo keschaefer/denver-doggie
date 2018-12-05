@@ -68,35 +68,38 @@ class App extends Component {
       })
     }
 
-    deleteLocation = (event) => {
-      event.preventDefault()
-      let deleteLocation = {
-            id: event.target.id
-          }
-          console.log("location id", deleteLocation)
-          return fetch('http://localhost:3001', {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json; charset=utf-8"
-            },
-            body: JSON.stringify(deleteLocation)
-          })
-        .then(() => this.getRequest())
-        .then(console.log(this.state.locations))
-      }  
-    
-    filterCategory = (event) => {
-      event.preventDefault()
-      this.setState({
-        filter_category: event.target.value.toLowerCase()
-      })
-      let filteredLocations = this.state.locations.filter(location => {
-      return location.category === this.state.filter_catergory
-      })
-      this.setState({
-        locations: filteredLocations
-      })
-    }
+  deleteLocation = (event) => {
+    event.preventDefault()
+    let deleteLocation = {
+      id: event.target.id
+      }
+    fetch('http://localhost:3001', {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify(deleteLocation)
+    })
+    let newLocations = this.state.locations.filter(location => {
+      return location.id !== Number(deleteLocation.id)
+    })
+    this.setState({
+      locations: newLocations
+    })
+  }  
+  
+  filterCategory = (event) => {
+    event.preventDefault()
+    this.setState({
+      filter_category: event.target.value.toLowerCase()
+    })
+    let filteredLocations = this.state.locations.filter(location => {
+    return location.category === this.state.filter_catergory
+    })
+    this.setState({
+      locations: filteredLocations
+    })
+  }
   
    
   render() {
