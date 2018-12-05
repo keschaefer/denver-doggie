@@ -4,13 +4,15 @@ import Header from './Components/Header';
 import Card from './Components/Card';
 import Form from './Components/Form';
 import Search from './Components/Search';
+import Description from './Components/Description'
 
 class App extends Component {
   constructor() {
     super()
       this.state = {
         locations: [],
-        filter_category: "Blah",
+        filter_category: "",
+        filtered_locations: [],
         id: "",
         location_name: "",
         location_address: "",
@@ -38,13 +40,6 @@ class App extends Component {
     event.preventDefault()
     this.setState({
       location_name: event.target.value
-    })
-  }
-
-  saveCategory = (event) => {
-    event.preventDefault()
-    this.setState({
-      category: event.target.value
     })
   }
 
@@ -93,13 +88,12 @@ class App extends Component {
       })
     }
 
-    //Getting error invalid input syntax for integer: "{"id":11}"
     deleteLocation = (event) => {
       event.preventDefault()
       let deleteLocation = {
             id: event.target.id
           }
-          console.log(deleteLocation)
+          console.log("location id", deleteLocation)
           return fetch('http://localhost:3001', {
             method: "DELETE",
             headers: {
@@ -107,57 +101,53 @@ class App extends Component {
             },
             body: JSON.stringify(deleteLocation)
           })
-          .then(response => response.json())
-          .then(response => (console.log(response)))
-          .then(response => {
-            this.setState({
-              locations: response
-            }) 
-          })
-          console.log(this.state.locations)
-        }  
+        .then(response => this.getRequest())
+        .then(console.log(this.state.locations))
+      }  
     
-        // let newLocationsList = this.state.locations.filter(location => {
-        //   return location.id !== response[0].id
-        // })
-    //Async issue, need to put in a promise
     filterCategory = (event) => {
-      let category = event.target.value.toLowerCase()
+      event.preventDefault()
       this.setState({
-        filter_category: category
+        filter_category: event.target.value.toLowerCase()
       })
       let filteredLocations = this.state.locations.filter(location => {
-      return location.category === this.state.filterCatergory
+      return location.category === this.state.filter_catergory
       })
       this.setState({
         locations: filteredLocations
       })
     }
+  
    
   render() {
     return (
       <Fragment>
-     <div className="App">
-       <div className= "main">
-          <Header />
-          <div className = "card-container">
-            <Card 
-            locations = {this.state.locations}
-            deleteLocation = {this.deleteLocation}/>
+        <div className="App">
+          <div className= "body">
+            <Header />
+            <Description />
+            <div className= "main-content">
+              <div className = "card-container">
+                <Card 
+                locations = {this.state.locations}
+                deleteLocation = {this.deleteLocation}/>
+              </div>
+              <div className= "search-form-content">
+                <Search
+                filterCategory= {this.filterCategory}
+                />
+                <Form 
+                formData = {this.formData}
+                saveLocationName = {this.saveLocationName}
+                saveCategory = {this.saveCategory}
+                saveLocationAddress = {this.saveLocationAddress}
+                saveDescription = {this.saveDescription}
+                saveRanking= {this.saveRanking}
+                  />
+              </div>
+            </div>
           </div>
-          <Search
-          filterCategory= {this.filterCategory}
-          />
-          <Form 
-          formData = {this.formData}
-          saveLocationName = {this.saveLocationName}
-          saveCategory = {this.saveCategory}
-          saveLocationAddress = {this.saveLocationAddress}
-          saveDescription = {this.saveDescription}
-          saveRanking= {this.saveRanking}
-          />
         </div>
-      </div>
       </Fragment>
     );
   }

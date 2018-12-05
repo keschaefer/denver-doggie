@@ -1,71 +1,95 @@
 .App {
   margin-right: 10%;
   margin-left: 10%;
-  background-image: url("https://www.transparenttextures.com/patterns/billie-holiday.png");
-  background-color: #f8f6ed; 
   font-family: 'Raleway', sans-serif;
   height: 1000em;
 }
 
-.main {
+.body {
   height: 100%;
-  padding: 2em;
   display: flex;
   flex-direction: column;
 }
 
 .header {
   color: #0f0b08;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; 
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.description-section {
+  margin-top: 2em;
   text-align: left;
 }
 
-.card {
-  width: 50rem;
-  min-height: 18rem;
-  border: 1px solid black;
-  margin: 1em;
-  padding: 1em;
+.hot-spots, .search-header {
+  font-size: 1.5em;
+  margin-top: 2em;
+}
+
+.main-content {
   display: flex;
 }
 
-.card-img{
- 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 75%;
 }
+
+.card {
+  width: 90%;
+  min-height: 15em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1%;
+  margin: 1em;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+}
+
+.card-body {
+  text-align: left;
+  margin: 2em;
+}
+
 .card img {
-  height: 15em;
-  width:  15em;
+  max-height: 14em;
 }
 
 .card-title {
   font-weight: bold;
 }
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 4em;
+
+.card-address {
+  color: #999999;
 }
 
-.form-container {
-  width: 50vw;
+.search {
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  text-align: left;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
-.title {
+.search-container p, .form-container p {
+  font-weight: bold;
   text-align: left;
 }
 
-.ranking-container {
+.form-container {
   display: flex;
-  
-}
-
-.form-check {
-  margin-left: 1em;
-  margin-right: 1em;
-}
-
-.form-check-label {
-  margin-left: .5em;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1%;
+  padding: 1em;
+  width: 90%;
+  margin-top: 10em;
+  margin-left: 5%;
+  margin-right: 5%;
 }

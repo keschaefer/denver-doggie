@@ -11,8 +11,8 @@ const Card = (props) => {
             <div className="card-body">
                <h5 className="card-title">{location.location_name}</h5>
                <p className="card-text">{location.description}</p>
-               <span>{location.location_address}</span>
-               <button id= {location.id} className="delete-button" onClick= {props.deleteLocation}>Delete</button>
+               <p className= "card-address">{location.location_address}</p>
+               <button className= "delete-button" id= {location.id} className="delete-button btn btn-info" onClick= {props.deleteLocation}>Delete</button>
             </div>
          </div>   
       )
