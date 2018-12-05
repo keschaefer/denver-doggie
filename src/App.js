@@ -21,7 +21,9 @@ class App extends Component {
         category: "",
         ranking: "",
         image: "",
-        deleteId: ""
+        deleteId: "",
+        search: "",
+        searchLocations: [],
       }
   }
 
@@ -97,9 +99,18 @@ class App extends Component {
     })
   }  
   
-  
+  searchByLocation = (event) => {
+    this.setState({
+      search: event.target.value
+    })
+  }
    
   render() {
+    let specifiedLocation = this.state.locations.filter(location => {
+      if (location.location_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
+        return location
+      }
+    })
     return (
       <Fragment>
         <div className="App">
@@ -107,18 +118,20 @@ class App extends Component {
             <Header />
             <Description />
             <div className= "main-content">
-              <div className = "card-container">
+              <div className= "card-container">
                 <Card 
-                locations = {this.state.locations}
-                deleteLocation = {this.deleteLocation}/>
+                locations= {this.state.locations}
+                searchLocations= {specifiedLocation}
+                deleteLocation= {this.deleteLocation}/>
               </div>
               <div className= "search-form-content">
                 <Search
                 filterCategory= {this.filterCategory}
                 handleChange= {this.handleChange}
+                searchByLocation= {this.searchByLocation}
                 />
                 <Form 
-                formData = {this.formData}
+                formData= {this.formData}
                 handleChange= {this.handleChange}
                 />
               </div>

@@ -21,7 +21,7 @@ return (
          
       <div className= "search-bar form-group title search">
          <p>Or search by location name</p>
-         <input class="form-control" type="text" placeholder="Enter a location name"></input>
+         <input onChange= {props.searchByLocation} class="form-control" type="text" placeholder="Enter a location name"></input>
       </div> 
    </div>
    )
