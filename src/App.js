@@ -37,38 +37,10 @@ class App extends Component {
     this.getRequest()
   }
     
-  saveLocationName = (event) => {
-    event.preventDefault()
+   handleChange = (event) => {
+    const { value, name } = event.target
     this.setState({
-      location_name: event.target.value
-    })
-  }
-
-  // saveRanking = (event) => {
-  //   event.preventDefault()
-  //   this.setState({
-  //     ranking: event.target.value
-  //   })
-  // }
-
-  saveLocationAddress = (event) => {
-    event.preventDefault()
-    this.setState({
-      location_address: event.target.value
-    })
-  }
-
-  // handleChange = (event) => {
-  //   const { value, name } = event.target
-  //   this.setState({
-  //     [name]: value
-  //   })
-  // }
-
-  saveDescription = (event) => {
-    event.preventDefault()
-    this.setState({
-      description: event.target.value
+      [name]: value
     })
   }
   
@@ -146,12 +118,8 @@ class App extends Component {
                 />
                 <Form 
                 formData = {this.formData}
-                saveLocationName = {this.saveLocationName}
-                saveCategory = {this.saveCategory}
-                saveLocationAddress = {this.saveLocationAddress}
-                saveDescription = {this.saveDescription}
-                saveRanking= {this.saveRanking}
-                  />
+                handleChange= {this.handleChange}
+                />
               </div>
             </div>
             <Footer />
