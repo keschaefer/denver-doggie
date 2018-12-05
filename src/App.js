@@ -68,7 +68,16 @@ class App extends Component {
       })
     }
 
-  deleteLocation = (event) => {
+    filterCategory = () => {
+      let filteredLocations = this.state.locations.filter(location => {
+        return location.category === this.state.filter_category.toLowerCase()
+      })
+      this.setState({
+        locations: filteredLocations
+      })
+    }
+    
+    deleteLocation = (event) => {
     event.preventDefault()
     let deleteLocation = {
       id: event.target.id
@@ -88,18 +97,6 @@ class App extends Component {
     })
   }  
   
-  filterCategory = (event) => {
-    event.preventDefault()
-    this.setState({
-      filter_category: event.target.value.toLowerCase()
-    })
-    let filteredLocations = this.state.locations.filter(location => {
-    return location.category === this.state.filter_catergory
-    })
-    this.setState({
-      locations: filteredLocations
-    })
-  }
   
    
   render() {
@@ -118,6 +115,7 @@ class App extends Component {
               <div className= "search-form-content">
                 <Search
                 filterCategory= {this.filterCategory}
+                handleChange= {this.handleChange}
                 />
                 <Form 
                 formData = {this.formData}

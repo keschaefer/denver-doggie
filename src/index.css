@@ -78,12 +78,21 @@
   color: #999999;
 }
 
-.search {
+.search-container {
   display: flex;
+  flex-direction: column;
   justify-content: left;
   text-align: left;
   margin-left: 5%;
   margin-right: 5%;
+}
+
+.filter-block {
+  display: flex;  
+}
+
+.filter-btn {
+  margin-left: 2em;
 }
 
 .search-container p, .form-container p {
