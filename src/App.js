@@ -70,14 +70,14 @@ class App extends Component {
       })
     }
 
-    filterCategory = () => {
-      let filteredLocations = this.state.locations.filter(location => {
-        return location.category === this.state.filter_category.toLowerCase()
-      })
-      this.setState({
-        locations: filteredLocations
-      })
-    }
+    // filterCategory = () => {
+    //   let filteredLocations = this.state.locations.filter(location => {
+    //     return location.category === this.state.filter_category.toLowerCase()
+    //   })
+    //   this.setState({
+    //     locations: filteredLocations
+    //   })
+    // }
     
     deleteLocation = (event) => {
     event.preventDefault()
