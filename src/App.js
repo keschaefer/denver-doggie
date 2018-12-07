@@ -19,7 +19,6 @@ class App extends Component {
         location_address: "",
         description: "",
         category: "",
-        ranking: "",
         image: "",
         deleteId: "",
         search: "",
@@ -65,7 +64,11 @@ class App extends Component {
       .then(response => (response.json()))
       .then(response => {
         this.setState({
-          locations: [...this.state.locations, response[0]]
+          locations: [...this.state.locations, response[0]],
+          location_name: "",
+          location_address: "",
+          description: "",
+          category: ""
         })
       })
     }
