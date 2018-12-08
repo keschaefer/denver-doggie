@@ -1,19 +1,17 @@
-import React, { Component, Fragment } from 'react';
-import './App.css';
-import Header from './Components/Header';
-import Card from './Components/Card';
-import Form from './Components/Form';
-import Search from './Components/Search';
-import Description from './Components/Description'
-import Footer from './Components/Footer'
+import React, { Component, Fragment } from "react";
+import "./App.css";
+import Header from "./Components/Header";
+import Card from "./Components/Card";
+import Form from "./Components/Form";
+import Search from "./Components/Search";
+import Description from "./Components/Description"
+import Footer from "./Components/Footer"
 
 class App extends Component {
   constructor() {
     super()
       this.state = {
         locations: [],
-        filter_category: "",
-        filtered_locations: [],
         id: "",
         location_name: "",
         location_address: "",
@@ -23,13 +21,16 @@ class App extends Component {
         deleteId: "",
         search: "",
         searchLocations: [],
+        // filter_category: "",
+        // filtered_locations: [],
       }
   }
 
   getRequest = () => {
-    fetch('http://localhost:3001/')
-      .then(response => (response.json()))
-      .then(response => {
+    console.log("HI")
+    fetch("https://evening-journey-97622.herokuapp.com/")
+      .then(result => (result.json()))
+      .then((response) => {
         this.setState({locations: response})
       })
     }
@@ -52,9 +53,9 @@ class App extends Component {
         location_address: this.state.location_address,
         description: this.state.description,
         category: this.state.category,
-        image: "https://dl.dropboxusercontent.com/s/hjwyykdtwyhe49x/Ace_Hardware.jpg"
+        image: "https://via.placeholder.com/150",
       }
-      fetch('http://localhost:3001', {
+      fetch("https://evening-journey-97622.herokuapp.com/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8"
@@ -72,7 +73,23 @@ class App extends Component {
         })
       })
     }
-
+    
+    deleteLocation = (event) => {
+    console.log(event.target.id)
+    fetch(`https://evening-journey-97622.herokuapp.com/${event.target.id}`, {
+      method: "DELETE",
+    }).then(result => (result.json()))
+      .then((response) => {
+        this.setState({locations: response})
+      })   
+  }  
+  
+  searchByLocation = (event) => {
+    this.setState({
+      search: event.target.value
+    })
+  }
+    // Filter only works on first click, need to refactor to work on successive clicks.
     // filterCategory = () => {
     //   let filteredLocations = this.state.locations.filter(location => {
     //     return location.category === this.state.filter_category.toLowerCase()
@@ -81,32 +98,6 @@ class App extends Component {
     //     locations: filteredLocations
     //   })
     // }
-    
-    deleteLocation = (event) => {
-    event.preventDefault()
-    let deleteLocation = {
-      id: event.target.id
-      }
-    fetch('http://localhost:3001', {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify(deleteLocation)
-    })
-    let newLocations = this.state.locations.filter(location => {
-      return location.id !== Number(deleteLocation.id)
-    })
-    this.setState({
-      locations: newLocations
-    })
-  }  
-  
-  searchByLocation = (event) => {
-    this.setState({
-      search: event.target.value
-    })
-  }
    
   render() {
     let specifiedLocation = this.state.locations.filter(location => {

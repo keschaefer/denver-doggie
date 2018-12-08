@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react"
 
 const Search = (props) => {
 return (
    <div className= "search-container">
-      {/* <p className= "search-header">SEARCH</p> */}
+      {/* */}
       {/* <div className="form-group title filter">
          <p>Filter for a specific category</p>
-            <div className= 'filter-block'>
+            <div className= "filter-block">
                <select onChange= {props.handleChange} className="form-control" name= "filter_category">
                   <option>Select...</option>
                   <option>Brewery</option>

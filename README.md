@@ -1,6 +1,6 @@
 # Doggie-Server 
 
-Find locations in the Denver area where your dog is welcome.
+Find locations in the Denver area where your dog is welcome. Add a location or delete those you no longer need. Search based on location name.  
 
 ## Tech Used
 

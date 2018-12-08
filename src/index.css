@@ -1,7 +1,7 @@
 .App {
   margin-right: 10%;
   margin-left: 10%;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .body {
@@ -23,7 +23,7 @@
 }
 
 .logo {
-  font-family: 'Charmonman', cursive;
+  font-family: "Charmonman", cursive;
   font-size: 20px;
   padding-right: 1em;
 }
@@ -162,7 +162,7 @@
     .App {
       margin-right: 2%;
       margin-left: 2%;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
     }
 
     .card-container {

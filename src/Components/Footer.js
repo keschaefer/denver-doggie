@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 
 const Footer = () => {
    return (
-      <footer className= 'footer'>Denver Doggie &copy; 2018</footer>
+      <footer className= "footer">Denver Doggie &copy; 2018</footer>
    )
 }
 
