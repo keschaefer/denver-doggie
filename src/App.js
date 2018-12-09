@@ -27,8 +27,7 @@ class App extends Component {
   }
 
   getRequest = () => {
-    console.log("HI")
-    fetch("https://evening-journey-97622.herokuapp.com/")
+    fetch("http://localhost:3001")
       .then(result => (result.json()))
       .then((response) => {
         this.setState({locations: response})
@@ -46,6 +45,8 @@ class App extends Component {
     })
   }
   
+  // https://evening-journey-97622.herokuapp.com/
+
   formData = (event) => {
     event.preventDefault()
     let newLocation = {
@@ -55,7 +56,7 @@ class App extends Component {
         category: this.state.category,
         image: "https://via.placeholder.com/150",
       }
-      fetch("https://evening-journey-97622.herokuapp.com/", {
+      fetch("http://localhost:3001", {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8"
@@ -75,13 +76,15 @@ class App extends Component {
     }
     
     deleteLocation = (event) => {
-    console.log(event.target.id)
-    fetch(`https://evening-journey-97622.herokuapp.com/${event.target.id}`, {
+    let locations = this.state.locations.filter(location => {
+      return location.id !== Number(event.target.id)
+    })
+    this.setState({
+      locations: locations
+    })
+    fetch(`http://localhost:3001/${event.target.id}`, {
       method: "DELETE",
-    }).then(result => (result.json()))
-      .then((response) => {
-        this.setState({locations: response})
-      })   
+    })
   }  
   
   searchByLocation = (event) => {
